@@ -1,0 +1,104 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh10700\viewkind0
+\deftab720
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\f0\fs24 \cf0 *********************************************************\
+ourvector<9ourvectorIiE> stats:\
+ # of vectors created:   1\
+ # of elements inserted: 3\
+ # of elements accessed: 3\
+*********************************************************\
+*********************************************************\
+ourvector<c> stats:\
+ # of vectors created:   131\
+ # of elements inserted: 419\
+ # of elements accessed: 2341\
+*********************************************************\
+*********************************************************\
+ourvector<9ourvectorIcE> stats:\
+ # of vectors created:   18\
+ # of elements inserted: 51\
+ # of elements accessed: 109\
+*********************************************************\
+*********************************************************\
+ourvector<i> stats:\
+ # of vectors created:   28\
+ # of elements inserted: 60\
+ # of elements accessed: 72\
+*********************************************************\
+*********************************************************\
+ourvector<10DNAprofile> stats:\
+ # of vectors created:   1\
+ # of elements inserted: 4\
+ # of elements accessed: 29\
+********************************************************* \
+- in main:\
+  The following are initialized \
+  ourvector<DNAprofile> database;\
+  ourvector<ourvector<char>> STR;\
+  ourvector<ourvector<int>> allPositions;\
+  ourvector<char> DNA;\
+  ourvector<int> processedSTR;\
+\
+-in load_db:\
+ vectors are called by reference\
+ database.push_back(ThisProfile)\
+ makes a copy of profile in database vector for each line in small.txt or large.txt\
+\
+-in load_dna: \
+ vectors are called by reference\
+ DNA.push_back(ch)\
+ Makes a copy of ch for every character in 1-20.txt and is added to DNA vector\
+\pard\pardeftab720\ri0\partightenfactor0
+\cf0 \
+-in display:\
+No vectors created \
+\
+-in process: \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+\cf0 vectors are called by reference\
+\pard\pardeftab720\ri0\partightenfactor0
+\cf0 positions.push_back(i);\
+passes position of each matching letter into a vector of integers. adds one integer per matching letter.\
+\
+allPositions.push_back(positions)\
+passes vector of positions into a vector of vectors, one vector for each STR \
+\
+runProcess: \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+\cf0 vectors are called by reference\
+\pard\pardeftab720\ri0\partightenfactor0
+\cf0 will run once per STR, therefor it will create a vector of integers representing the longest sequence of STRs for each STR. \
+However all the vectors created in process must be multiplies by the number of STRs since each STR is processed individually and called in runProcess\
+longestSTR.push_back(process(STR[n], DNA, allPositions))\
+\
+Search: \
+No vectors are created \
+\
+For my example I used the files: \
+Small.txt \
+1.txt \
+\
+Small.txt contains 3 people and 3 STRs\
+This will result in:\
+1 DNAprofile vector size 3 \
+	each DNAprofile contains:\
+	1 vector of sequence frequencies size 3 \
+	1 vector of vector <char> same as the one bellow \
+\
+1 dnaSamples vector which contains \
+	3 STR vectors which contain \
+		1 char vector size 5\
+		1 char vector size 4\
+		1 char vector size 4\
+\
+1.txt contains 170 characters \
+Which result in: \
+1 DNA <char> vector which contains 170 chars. \
+	\
+\
+}
